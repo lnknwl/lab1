@@ -1,0 +1,14 @@
+PROJECT_NAME           = "Лабораторная работа №1"
+OUTPUT_DIRECTORY       = docs
+
+INPUT                  = task1 task2 task3 task4
+RECURSIVE              = YES
+
+EXTRACT_ALL            = YES
+SOURCE_BROWSER          = YES
+INLINE_SOURCES         = YES
+
+GENERATE_HTML           = YES
+GENERATE_LATEX          = NO
+
+HAVE_DOT                = NO

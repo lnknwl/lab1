@@ -1,8 +1,11 @@
 PROJECT_NAME           = "Лабораторная работа №1"
 OUTPUT_DIRECTORY       = docs
 
-INPUT                  = task1 task2 task3 task4
+INPUT                  = .
 RECURSIVE              = YES
+FILE_PATTERNS          = *.cpp *.h *.hpp
+
+EXCLUDE                = docs .git
 
 EXTRACT_ALL            = YES
 SOURCE_BROWSER          = YES

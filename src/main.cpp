@@ -2,6 +2,7 @@
 #include <windows.h>
 #include "task1.h"
 #include "task2.h"
+#include "task3.h"
 
 /**
  * @brief Запускает первое задание
@@ -75,11 +76,54 @@ void runTask2()
     arr = nullptr;
 
     std::cout << "Память освобождена, указатель обнулен\n";
+}
 
-    if (arr == nullptr)
+/**
+ * @brief Запускает третье задание
+ */
+void runTask3()
+{
+    int size{};
+
+    std::cout << "Введите размер массива: ";
+    std::cin >> size;
+
+    if (size < 3)
     {
-        std::cout << "Указатель равен nullptr, обращение к памяти не выполняется\n";
+        std::cout << "Размер массива должен быть не меньше 3\n";
+        return;
     }
+
+    SafeArray myArr = createArray(size);
+
+    std::cout << "Введите " << size << " целых чисел:\n";
+
+    for (int i = 0; i < size; ++i)
+    {
+        std::cin >> getElement(myArr, i);
+    }
+
+    std::cout << "Исходный массив:\n";
+    printSafe(myArr);
+
+    getElement(myArr, 2) = 999;
+
+    std::cout << "После изменения элемента с индексом 2:\n";
+    printSafe(myArr);
+
+    int newSize{};
+
+    std::cout << "Введите новый размер массива: ";
+    std::cin >> newSize;
+
+    reSizeArray(myArr, myArr.size, newSize);
+
+    std::cout << "Массив после изменения размера:\n";
+    printSafe(myArr);
+
+    delete[] myArr.data;
+    myArr.data = nullptr;
+    myArr.size = 0;
 }
 
 /**
@@ -97,6 +141,7 @@ int main()
     std::cout << "Лабораторная работа №1\n";
     std::cout << "1 - Задание 1\n";
     std::cout << "2 - Задание 2\n";
+    std::cout << "3 - Задание 3\n";
     std::cout << "Выберите задание: ";
     std::cin >> choice;
 
@@ -108,6 +153,10 @@ int main()
 
         case 2:
             runTask2();
+            break;
+
+        case 3:
+            runTask3();
             break;
 
         default:

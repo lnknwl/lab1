@@ -1,1 +1,9 @@
+build/
 docs/
+
+*.exe
+*.o
+*.obj
+
+.vscode/
+.idea/

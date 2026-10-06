@@ -3,6 +3,7 @@
 #include "task1.h"
 #include "task2.h"
 #include "task3.h"
+#include "task4.h"
 
 /**
  * @brief Запускает первое задание
@@ -127,6 +128,50 @@ void runTask3()
 }
 
 /**
+ * @brief Запускает четвертое задание
+ */
+void runTask4()
+{
+    int rows{};
+    int cols{};
+
+    std::cout << "Введите количество студентов: ";
+    std::cin >> rows;
+
+    std::cout << "Введите количество оценок у каждого студента: ";
+    std::cin >> cols;
+
+    if (rows <= 0 || cols <= 0)
+    {
+        std::cout << "Размеры матрицы должны быть больше нуля\n";
+        return;
+    }
+
+    int** matrix = allocateMatrix(rows, cols);
+
+    if (matrix == nullptr)
+    {
+        std::cout << "Не удалось создать матрицу\n";
+        return;
+    }
+
+    fillMatrix(matrix, rows, cols);
+
+    printMatrix(matrix, rows, cols);
+
+    printMatrix(matrix, rows, cols, false);
+
+    printMatrix(
+        matrix,
+        rows,
+        cols,
+        true,
+        "Оценки студентов");
+
+    freeMatrix(matrix, rows);
+}
+
+/**
  * @brief Главная функция программы
  *
  * @return 0 если программа завершилась успешно
@@ -142,6 +187,7 @@ int main()
     std::cout << "1 - Задание 1\n";
     std::cout << "2 - Задание 2\n";
     std::cout << "3 - Задание 3\n";
+    std::cout << "4 - Задание 4\n";
     std::cout << "Выберите задание: ";
     std::cin >> choice;
 
@@ -157,6 +203,10 @@ int main()
 
         case 3:
             runTask3();
+            break;
+
+        case 4:
+            runTask4();
             break;
 
         default:

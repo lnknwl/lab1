@@ -1,6 +1,5 @@
 #include <iostream>
-
-constexpr int ARRAY_SIZE = 10;
+#include "task1.h"
 
 /**
  * @brief Заполняет массив числами с клавиатуры
@@ -67,37 +66,4 @@ void multiplyByTwo(int (&arr)[ARRAY_SIZE])
     {
         element *= 2;
     }
-}
-
-/**
- * @brief Главная функция программы
- *
- * @return 0 если программа завершилась успешно
- */
-int main()
-{
-    int numbers[ARRAY_SIZE]{};
-
-    fillArray(numbers);
-
-    std::cout << "Исходный массив:\n";
-    printArray(numbers);
-
-    int firstIndex{};
-    int secondIndex{};
-
-    std::cout << "Введите индексы двух элементов для обмена: ";
-    std::cin >> firstIndex >> secondIndex;
-
-    swapElements(numbers, firstIndex, secondIndex);
-
-    std::cout << "После обмена:\n";
-    printArray(numbers);
-
-    multiplyByTwo(numbers);
-
-    std::cout << "После умножения на два:\n";
-    printArray(numbers);
-
-    return 0;
 }
